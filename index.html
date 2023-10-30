@@ -6,8 +6,9 @@
     <title>DOM Manipulation</title>
 </head>
 <body>
+    <!-- The document object contains methods, like the getElementByID() method we’re using here to retreive a specific element, or the createElement(), which creates a new HTML element, or the createTextNode() methods used to create new text content. We’ve also used the appendChild() method (which is defined on a node) that appends the passed element to the end of the list of the node. -->
     <div id="mainDiv">Text in HTML.</div>
-    <script>
+    <!-- <script>
         // let's look at the document
         console.log(document);
         // selecting an existing element from the document
@@ -20,6 +21,27 @@
         newParagraph.appendChild(document.createTextNode("Any text can be generated here and appended as a child to p element that was just created"));
         // appending the whole paragraph to the div
         mainDiv.appendChild(newParagraph);
-    </script> 
+    </script>  -->
+    <script>
+        // helper to create <div>text</div>
+        function divWithText(text) {
+            let div = document.createElement("div"); // creates a new div element but doesn't attach it to the DOM yet. a detached branch of the DOM tree
+            let textNode = document.createTextNode(text); // creates a text node containing the 'text' you've passed in. a leaf that'll attach to the branch
+            div.appendChild(textNode); // attaches the text node to the 'div' element and now the branch has a leaf! 
+            return div; //returns the new 'div' element with the attached text node and it's ready to be planted somewhere in the DOM tree
+        }
+    
+        mainDiv = document.getElementById("mainDiv");  // fetches the 'div' element with the id 'mainDiv' from the DOM. Picking a specific branch on the tree to add more leaves to
+    
+        // a for loop runs 10 times
+        for (i = 0; i < 10; ++i) {
+            mainDiv.appendChild(divWithText(String(i * i))); // for each iteration, it calls the 'divWithText' function to create a new 'div' element with the square of the loop counter 'i' as its text. Each of the new 'divs' get attached to 'mainDiv' 
+        }
+
+        
+        // this below creates a 'div' with the text 'x' and appends it to 'mainDiv'        
+        b = divWithText("BOB");
+        mainDiv.appendChild(b);
+    </script>
 </body>
 </html>
