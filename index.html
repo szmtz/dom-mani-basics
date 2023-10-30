@@ -49,8 +49,32 @@
 
     <!-- 3RD SCRIPT -->
 
-
-
+    <script>
+        function divWithText(text) {
+            let div = document.createElement("div");
+            let textNode = document.createTextNode(text);
+            div.appendChild(textNode);
+            return div;
+        }
     
+        // Styling the text by setting the position and color.
+        function textAt(text, x, y) {
+            let node = divWithText(text);
+            node.setAttribute("style", 
+                `position:absolute; \ 
+                left: ${x}px; \
+                top: ${y % 50}px; \
+                color: hsl(${x % 255}, 100%, 50%)`);
+            return node;
+        }
+    
+        mainDiv = document.getElementById("mainDiv");
+        // computing the position of the text
+        for (let i = 0; i < 200; i += 10) {
+            mainDiv.appendChild(textAt(i.toString(), 3 * i, 3 * i));
+        }
+    </script>
+
+
 </body>
 </html>
