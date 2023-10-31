@@ -9,7 +9,7 @@
 </head>
 <body>
     <!-- The document object contains methods, like the getElementByID() method we’re using here to retreive a specific element, or the createElement(), which creates a new HTML element, or the createTextNode() methods used to create new text content. We’ve also used the appendChild() method (which is defined on a node) that appends the passed element to the end of the list of the node. -->
-    <div id="mainDiv">Animation</div>
+    <!-- <div id="mainDiv">Animation</div> -->
     <!-- <script>
         // let's look at the document
         console.log(document);
@@ -165,11 +165,11 @@
 <!-- 5th Script - Javascript Events -->
 
 
-<!-- direct reference to a function -->
+<!-- direct reference to a function
 <button onclick="messageMe()">Click Me!</button>
-<!-- no direct reference, specified ID instead -->
+no direct reference, specified ID instead
 <button id="myButton">No, click Me!</button>
-<!-- direct reference to a function -->
+direct reference to a function
 <div onclick="divMessage()">Can you also click me?</div>
 <script>
     // the function referenced from the button in html
@@ -186,7 +186,38 @@
     function divMessage() {
         alert("See, you don't have to be a button to be noticed!");
     }
-    </script>
+    </script> -->
+
+
+<!-- 6th Script - Dropdown Box with onchange event  -->
+
+<!-- defining a drop-down box with three values-->
+<select id="dropDown">
+    <option value="Pear">Pear</option>
+    <!-- the selected indicates that 'Apple' is the default value -->
+    <option selected value="Apple">Apple</option>
+    <option value="Plum">Plum</option>
+</select>
+<div>My favorite fruit: <span id="fruit"></span></div>
+<script>
+    // initialize the favorite fruit field:
+    document.getElementById("fruit").innerHTML =
+        document.getElementById("dropDown").value;
+
+    // we identify the button and add the function to be connected dynamically
+    document.getElementById("dropDown").onchange =
+        event => {
+            // using the event object
+            document.getElementById("fruit").innerHTML = event.target.value;
+            // this would work too, of course
+            //document.getElementById("fruit").innerHTML = document.getElementById("dropDown").value;
+        }
+</script>
+
+
+
+
+
 
 </body>
 </html>
