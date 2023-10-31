@@ -7,7 +7,7 @@
 </head>
 <body>
     <!-- The document object contains methods, like the getElementByID() method we’re using here to retreive a specific element, or the createElement(), which creates a new HTML element, or the createTextNode() methods used to create new text content. We’ve also used the appendChild() method (which is defined on a node) that appends the passed element to the end of the list of the node. -->
-    <div id="mainDiv">Text in HTML.</div>
+    <div id="mainDiv">Manipulating the DOM</div>
     <!-- <script>
         // let's look at the document
         console.log(document);
@@ -50,6 +50,7 @@
     <!-- 3RD SCRIPT -->
 
     <script>
+        //same as initial text above 
         function divWithText(text) {
             let div = document.createElement("div");
             let textNode = document.createTextNode(text);
