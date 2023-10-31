@@ -192,9 +192,9 @@ direct reference to a function
 <!-- 6th Script - Dropdown Box with onchange event  -->
 
 <!-- defining a drop-down box with three values-->
-<select id="dropDown">
+<!-- <select id="dropDown">
     <option value="Pear">Pear</option>
-    <!-- the selected indicates that 'Apple' is the default value -->
+    the selected indicates that 'Apple' is the default value
     <option selected value="Apple">Apple</option>
     <option value="Plum">Plum</option>
 </select>
@@ -212,9 +212,28 @@ direct reference to a function
             // this would work too, of course
             //document.getElementById("fruit").innerHTML = document.getElementById("dropDown").value;
         }
+</script> -->
+
+<!-- 7th Script - interacting with events and an SVG element -->
+<svg width="400" height="200" style="stroke:black; stroke-width:1px">
+    <rect id="myBar" x="10" y="10" width="20" height="20"
+          style="fill:steelblue">
+    </rect>
+</svg>
+<script>
+    // we define a new property, __data__ on the rectangle
+    // this is how D3 does it!
+    document.getElementById("myBar").__data__ = 0;
+    // on click we make the rectangle wider by 10 pixels and rotate the color
+    document.getElementById("myBar").onclick = function (event) {
+        let colors = ["DarkOrchid", "Teal", "Tomato", "SteelBlue"];
+        let rect = event.target;
+        let currentWidth = +rect.getAttribute("width");
+        rect.setAttribute("width", (currentWidth + 10).toString());
+        rect.setAttribute("style", "fill: " + colors[rect.__data__ % 4]);
+        rect.__data__++;
+    }
 </script>
-
-
 
 
 
